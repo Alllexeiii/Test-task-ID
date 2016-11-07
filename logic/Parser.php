@@ -7,21 +7,32 @@ use \yii\base\Object;
 
 class Parser extends Object {
 	
-	// Получить все ссылки страницы
-	public function getAllLink($url) {
-		// Создаем DOMDocument
-		$dom = new \DOMDocument();
+	private $links;
+	private $dom;
+	private $url;
+	
+	public function __construct($url) {
+		$this->links = [];
+		$this->dom = new \DOMDocument();
+		$this->url = $url;
+	}
+	// Загружаем контент
+	public function createDOM() {
 		// Отключаем ошибки
 		$internalErrors = libxml_use_internal_errors(true);
 		// Загружаем в DOM контент страницы 
-		$dom->loadHTMLFile($url); 
+		$this->dom->loadHTMLFile($this->url); 
 		$internalErrors = libxml_use_internal_errors(true);
-		$links = []; 
+		return $this->dom;
+	}
+	
+	// Получить все ссылки страницы
+	public function getAllLink() {
+		$this->createDOM();
 		// Получаем атрибуты ссылок и запсываем их в массив
-		foreach($dom->getElementsByTagName('a') as $link) { 
-			$links[] = array('url' => $link->getAttribute('href'), 'text' => $link->nodeValue); 
+		foreach($this->dom->getElementsByTagName('a') as $link) { 
+			$this->links[] = array('url' => $link->getAttribute('href'), 'text' => $link->nodeValue); 
 		} 
-		// Возвращаем ссылки
-		return $links; 
+		return $this->links; 
 	}
 }

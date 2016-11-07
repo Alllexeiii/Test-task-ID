@@ -53,11 +53,13 @@ class SiteController extends Controller
     {
 		$model = new UrlLink();
 		$form = new UrlForm();
-		$parser = new Parser();
 		if (Yii::$app->request->post()) { 
-			$date = Yii::$app->request->post("UrlForm");
-			$links = $parser->getAllLink($date["url"]);
-			$model->saveData($links, $date["url"]);
+			$data = Yii::$app->request->post("UrlForm");
+			$parser = new Parser($data["url"]);
+			$links = $parser->getAllLink();
+			if($links){
+				$model->saveData($links, $data["url"]);
+			}
 		}
 		$query = UrlLink::find();
 		$countQuery = clone $query;
