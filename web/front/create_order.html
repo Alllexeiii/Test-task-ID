@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="css/style.css" rel="stylesheet" type="text/css" />
+	<link href="css/fonts.css" rel="stylesheet" type="text/css" />
+	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link href="css/owl.carousel.css" rel="stylesheet" />
+	<link href="css/media.css" rel="stylesheet" type="text/css" />
+	<link href="css/glide.css" rel="stylesheet" type="text/css" />
+	<link href="css/style-modal.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="libs/font-awesome-4.2.0/css/font-awesome.min.css" />
+	<!--	
+		<script src="js/jquery.min.js"></script>
+	-->
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="js/jquery.glide.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/owl.carousel.js"></script>
+	<meta charset="utf-8">
+	<title>YouMelon.com</title>
+	<link rel="icon" href="favicon.ico" type="image/x-icon" />
+</head>
+<body>
+	<div id = "header" class = "header">
+		<div class = "header_block nopadding row">
+			<div class = "block_logo">
+				<a href = "index.html"><img src = "images/logo.png" alt = "logo" /></a>
+			</div>
+			<div class = "block_order">
+				<a class = "create_order" href = "#">Заказать работу</a> 
+				<a class = "create_order" href = "chose_task.html">Выбрать задание</a> 
+			</div>
+			<div class = "block_auth">
+				<div class = "block_in" style = "display: none;" >
+					<a href = "#win1">Вход</a>
+					<a class = "second" href = "#">Регистрация</a>
+				</div>	
+				<div class = "block_out"  >
+					<a class = "mail" href = "#"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
+					<a href = "#">Alllexeiii</a>
+					<a class = "out" href = "#" title = "Выход"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Модальное окно входа на сайт-->
+	<a href="#x" class="overlay" id="win1"></a>
+	<div class="popup">
+		<h1>Вход</h1>
+		<form id="login-form" action="/web/index.php?r=site%2Flogin" method="post">
+			<input type="hidden" name="_csrf" value="NzhLWU5BYlNfaHgpHwMgflgIJT4eMTccdE4Sbx0iVhlvXCkPAyshFw==">
+			<div class="form-group width_reg field-loginform-username required">
+				<label class="labelclass" for="loginform-username">Логин:</label>
+				<input type="text" id="loginform-username" class="form-control inputclass" name="LoginForm[username]">
+				<div class = "clear"></div>
+				<div class=""><p class="help-block help-block-error"></p></div>
+			</div>
+			<div class="form-group width_reg field-loginform-password required">
+				<label class="labelclass" for="loginform-password">Пароль:</label>
+				<input type="password" id="loginform-password" class="form-control inputclass" name="LoginForm[password]">
+				<div class = "clear"></div>
+				<div class=""><p class="help-block help-block-error"></p></div>
+			</div>
+			<div class="form-group field-loginform-rememberme">
+				<input type="hidden" name="LoginForm[rememberMe]" value="0">
+				<input  class = "rememberMe" type="checkbox" id="loginform-rememberme" name="LoginForm[rememberMe]" value="1" checked> 
+				<label for="loginform-rememberme">Запомнить меня</label>
+				<div class = "clear"></div>
+				<p class="help-block help-block-error"></p>
+			</div>
+			<div class="form-group">
+				<button type="submit" class="btn btn_in" name="login-button">Войти</button>            
+			</div>
+			<div class="form-group reg_forgot">
+				<a href = "#">Регистрация</a>
+				<a href = "#">Забыли пароль?</a>
+			</div>
+		</form>
+		<a class="close" title="Закрыть" href="#close"></a>
+	</div>
+	<div class = "content_t">
+		<div class = "chose_task">
+			<div class = "block_chose_task nopadding">
+				<h1>Cоздане задания</h1>
+				<div class = "left_block">
+					<form action = "#" method = "post">
+						<div class = "filtr_create">
+							<select name = "country">
+								<option value = "0">Страна</option>
+								<option value = "1">Россия</option>
+								<option value = "2">Беларусь</option>
+								<option value = "3">Украина</option>
+							</select>
+							<select name = "state">
+								<option value = "0">Регион</option>
+								<option value = "1">Минская обл.</option>
+								<option value = "2">Гомельская обл.</option>
+								<option value = "3">Могилевская обл.</option>
+							</select>
+							<select name = "city">
+								<option value = "0">Город</option>
+								<option value = "1">Гомель</option>
+								<option value = "2">Жлобин</option>
+								<option value = "3">Буда-Кошелево</option>
+							</select>
+							<select name = "subject">
+								<option value = "0">Предмет</option>
+								<option value = "1">Математика</option>
+								<option value = "2">Теоритическая механика</option>
+								<option value = "3">Физика</option>
+							</select>
+							<p>Если Вашего предмета нет в списке, введите его:</p>
+							<input type = "text" name = "subject_2" />
+						</div>
+						<div class = "create_order">
+							<div class="form-group">
+								<label>Название</label>
+								<input type = "text" name = "title" />
+							</div>
+							<div class="form-group">
+								<label>Описание</label>
+								<textarea></textarea>
+							</div>	
+							<div class="form-group">
+								<label>Крайний срок</label>
+								<input type = "text" name = "count" />
+								<select name = "value">
+									<option value = "0">часов</option>
+									<option value = "1">дней</option>
+									<option value = "2">недель</option>
+									<option value = "3">месяцев</option>
+								</select>
+								<input type = "checkbox" name = "immediately" />
+								<p>Срочно</p>
+							</div>
+							<div class="form-group">
+								<label>Цена</label>
+								<input type = "text" name = "count" />
+								<select name = "value">
+									<option value = "0">RUB</option>
+									<option value = "1">EUR</option>
+									<option value = "2">USD</option>
+									<option value = "3">BUN</option>
+								</select>
+								<input type = "checkbox" name = "noprice" />
+								<p>Договорная</p>
+							</div>								
+						</div>
+						<div class = "clear"></div>
+						<button type="submit" class="btn btn_create" name="create_order">Опубликовать</button>
+					</form>
+				</div>
+				<div class = "right_block">
+					<div class = "pres_block">
+						<img src = "images/reclama.png" alt = "reclama" />
+					</div>
+					<div class = "pres_block" style = "background-image: url(images/slide3.jpg); background-size: 100%">
+						
+					</div>	
+				</div>
+				<div class = "clear"></div>
+			</div>
+		</div>
+	</div>
+	<div class = "footer">
+		<div class = "footer_block row nopadding">
+			<div class = "block_logo">
+				<a href = "#"><img src = "images/logo.png" alt = "logo" /></a>
+				<p>&copy; 2016 &laquo;youmelon.com&raquo;</p>
+			</div>
+			<div class = "soc_btn">
+				<div class = "soc_btn_wrap">
+					<p>Мы в соц. сетях:</p>
+					<a href = "#"><img src = "images/vk.png" alt = "vk" /></a>
+					<a href = "#"><img src = "images/ok.png" alt = "ok" /></a>
+					<a href = "#"><img src = "images/fb.png" alt = "fb" /></a>
+				</div>	
+			</div>
+			<div class = "footer_menu">
+				<a href = "#">Обратная связь</a>
+				<a href = "#">Правила сервиса</a>
+			</div>
+		</diV>
+	</div>
+	<script src="js/func.js"></script>
+</body>
+</html>
+
